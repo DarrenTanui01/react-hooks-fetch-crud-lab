@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function QuestionForm({ onAddQuestion }) {
+function QuestionForm({ onAddQuestion, questions }) {
   const [formData, setFormData] = useState({
     prompt: "",
     answer1: "",
@@ -19,7 +19,9 @@ function QuestionForm({ onAddQuestion }) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    const newId = questions.length > 0 ? Math.max(...questions.map(q => q.id)) + 1 : 1;
     const newQuestion = {
+      id: newId,
       prompt: formData.prompt,
       answers: [formData.answer1, formData.answer2, formData.answer3, formData.answer4],
       correctIndex: parseInt(formData.correctIndex),

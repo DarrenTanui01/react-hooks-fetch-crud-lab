@@ -33,7 +33,7 @@ function App() {
     <main>
       <AdminNavBar onChangePage={setPage} />
       {page === "Form" ? (
-        <QuestionForm onAddQuestion={handleAddQuestion} />
+        <QuestionForm onAddQuestion={handleAddQuestion} questions={questions} />
       ) : (
         <QuestionList
           questions={questions}
